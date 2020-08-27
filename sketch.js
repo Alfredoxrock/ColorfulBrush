@@ -1,27 +1,21 @@
-var hue;
-
 function setup() {
-createCanvas(windowWidth,windowHeight);
-hue = 0;
-background('black');
+  createCanvas(windowWidth, windowHeight);
+  background('black');
+
 }
 
 function draw() {
-//background('black');
-//mouseDragged();
-}
+  colorMode(HSB);
+  // background(frameCount % 360, 100, 100);
+  if(mouseIsPressed){
+   noStroke();
+    stroke((5*frameCount) % 360, 40, 100);
+    fill((5*frameCount) % 360, 100, 100);
 
-function mouseDragged(){
-  hue > 360 ? hue = 0 : hue++;
-  colorMode(HSL,360);
-  noStroke();
-  fill(hue,200,200);
-  ellipse(mouseX, mouseY, 25, 25);
-}
+    // ellipse(mouseX, mouseY, 30,30);
+    strokeWeight(20);
+    line(mouseX, mouseY, pmouseX, pmouseY);
+  }
 
-function keyPressed() {
-    if (keyCode == 82) {
-        //alert("You typed the letter r!");
-        hue = 0;
-    }
+  colorMode(RGB);
 }
